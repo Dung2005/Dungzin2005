@@ -1,0 +1,55 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+#define MAX 100
+void matran(string file , int arr[][MAX] , int &n , int &m){
+	ifstream input(file);
+	string line;
+	getline(cin , line);
+	for(int i = 0 ; i < n ; i ++){
+		for(int j = 0 ; j < m ; j++){
+			cin>>arr[i][j];
+		}
+	}
+}
+
+double tichle(int arr[][MAX] , int& n  , int&m){
+	double kq;
+	for(int i = 0 ; i < n ; i++){
+		for(int j = 0 ; j < i ; j++){
+			double tich = 1;
+			cout<<arr[i][j]<<" ";
+			if(arr[i][j] % 2 != 0){
+				kq = tich *arr[i][j]; 
+			}
+			if(arr[i][j] < 0 && arr[i][j] % 2 != 0){
+				cout<<"ko co phan tu le duoi duong cheo phu "<<endl;
+				break;
+			}
+		}
+		cout<<endl;
+	}
+	cout<<"tich cac diem nam duoi duong cheo phu la : "<<kq<<endl;
+	return kq;
+}
+void xuat(int arr[][MAX] , int n , int m){
+	for(int i = 0 ; i < n ; i++){
+		for(int j = 0 ; j < m ; j++){
+			cout<<arr[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
+
+
+int main(){
+    int n , m ;
+	cin>>n>>m;
+	int arr[MAX][MAX];
+	matran("matran.txt" , arr , n , m);
+	cout<<"**************************************"<<endl;
+	xuat(arr , n , m);
+	
+	tichle(arr , n , m);
+    
+}
