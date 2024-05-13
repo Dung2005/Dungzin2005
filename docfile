@@ -1,0 +1,24 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    fstream input("D:\\input.txt"); // Open input file
+    fstream output("D:\\output.txt", ios::out); // Open output file for writing
+    string str;
+    getline(input, str); // Read each line from input file
+        cout << str << endl; // Print content to console
+        output << "helllllo world" << endl; // Write to output file
+        
+    if (input.is_open() && output.is_open()) {
+        cout << "Files opened successfully!" << endl;
+    }
+    else {
+        cout << "Failed to open files!" << endl;
+    }
+
+    input.close(); // Close input file
+    output.close(); // Close output file
+
+    return 0;
+}
