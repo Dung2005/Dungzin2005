@@ -1,0 +1,132 @@
+#include<iostream>
+#include<string>
+#include <limits>
+using namespace std;
+struct sach{
+    string masach,tensach,tentacgia;
+    double giatien;
+};
+struct sinhvien{
+    string msv, hoten;
+    double diemtoan , diemanh , diemtinhoc , diemtriet;
+};
+void nhap(sach arr[],int n){
+    cin.ignore();
+    for(int i=0;i<n;i++){
+        cout<<"nhap thong tin cuon sach thu "<<i+1<<": "<<endl;
+        cout<<"nhap ma sach: ";
+        getline(cin,arr[i].masach);
+        cout<<"nhap ten sach: ";
+        getline(cin,arr[i].tensach);
+        cout<<"nhap ten tac gia: ";
+        getline(cin,arr[i].tentacgia);
+        cout<<"nhap gia tien: ";
+        cin>>arr[i].giatien;
+        cin.ignore();
+    }
+}
+void xuat(sach arr[],int i){
+        cout<<"thong tin cuon sach thu "<<i+1<<": "<<endl;
+        cout<<"ma sach cua ong "<<arr[i].tentacgia<<" la: "<<arr[i].masach<<endl;
+        cout<<"ten sach cua ong "<<arr[i].tentacgia<<" la: "<<arr[i].tensach<<endl;
+        cout<<"ng sang tac: "<<arr[i].tentacgia<<endl;
+        cout<<"gia tien: "<<arr[i].giatien<<endl;
+        cout<<"******************************************************"<<endl;
+    
+}
+void ktrasach(sach arr[],int n,const string tacgia){
+    cout<<"cac cuon sach cua tac gia: "<<tacgia<<endl;
+    for(int i=0;i<n;i++){
+        if(arr[i].tentacgia == tacgia){
+            xuat(arr,i);
+        }
+    }
+}
+int sachmax(sach arr[],int n){
+    cout<<"cuon sach max nhat la: "<<endl;
+    int dsgiasachmaxnhat =0;
+    for(int i=1;i<n;i++){
+            if(arr[i].giatien > arr[dsgiasachmaxnhat].giatien){
+                dsgiasachmaxnhat = i;
+        }
+    }
+    return dsgiasachmaxnhat;
+}
+void demsach(sach arr[],int n){
+    cout<<"nhung cuon sach co gia tri lon hon 100 la: "<<endl;
+    int dem=0;
+    for(int i=0; i < n; i++){
+        if(arr[i].giatien > 100){
+            dem++;
+            xuat(arr,i);
+        }
+    }
+    cout<<"co tat ca "<<dem<<"quyen sach co gia tri >100"<<endl;
+}
+int main(){
+    int n;        int option;
+
+    cout<<"___Day la chuong trinh quan ly: "<<endl;
+    cout<<"moi cac bn nhap vao 1 so >0: ";
+    cin>>n;
+
+    sach arr[n];
+    string tacgia;
+
+    do{
+        cout<<"==============MENU=============="<<endl;
+        cout<<"=========ctrinh quan ly=========="<<endl;
+        cout<<"===moi bam phim bat ky de lua chon=="<<endl;
+        cout<<"1.nhap thong tin sach"<<endl;
+        cout<<"2.hien thi cac thong tin cua sach "<<endl;
+        cout<<"3.tim kiem cuon sach cua tac gia"<<endl;
+        cout<<"4.hien thi cuon sach co gia tri lon nhat "<<endl;
+        cout<<"5.hien thi cuon sach co gia tri lon hon 100 "<<endl;
+        cout<<"bam 0 de thoat chuong trinh"<<endl;
+
+        cin>>option;
+        switch (option){
+            case 1:
+                nhap(arr,n);
+                cout<<"bam 1 phim de tt"<<endl;
+                system("pause");
+                break;
+            case 2:
+                for(int i=0; i<n; i++){
+                    xuat(arr,i);
+                }
+                cout<<"bam 1 phim de tt"<<endl;
+                system("pause");
+                break;
+            case 3:
+                cin.ignore();
+                string tacgia;
+                cout<<"nhap ten tac gia can tim: ";
+                getline(cin,tacgia);
+                ktrasach(arr,n,tacgia);
+                cout<<"bam 1 phim de tt"<<endl;
+                system("pause");
+                break;
+            case 4:
+                
+                    int dsgiasachmaxnhat = sachmax(arr,n);
+                    xuat(arr,dsgiasachmaxnhat);
+                    cout<<"bam 1 phim de tt"<<endl;
+                    system("pause");
+                
+                break;
+            case 5:
+                demsach(arr,n);
+                cout<<"bam 1 phim de tt"<<endl;
+                system("pause");
+                break;
+            case 0:
+                cout<<"thoat chuong trinh "<<endl;
+                break;
+            default:
+                cout<<"ko tim thay lua chon moi nhap lai:"<<endl;
+                break;
+            }
+    }while(option != 0);
+        return 0;
+}
