@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct dv{
+    string hoten;
+    double ns , nkn;
+};
+void nhap(dv arr[] , int n ){
+    cin.ignore();
+    for(int i = 0 ; i < n ; i++){
+        cout<<"nhap vao ho ten";
+        getline(cin , arr[i].hoten);
+        cout<<"nhap vao ns"<<endl;
+        cin>>arr[i].ns;
+        cin>>arr[i].nkn;
+    }
+}
+void xuat(dv arr[] , int n){
+    for(int i = 0 ; i < n ; i++){
+        cout<<
+    }
+}
+int main() {
+}
