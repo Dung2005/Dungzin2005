@@ -1,0 +1,62 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+struct sinhvien{
+    string hoten , gioitinh;
+    double age;
+};
+
+void ghifile(fstream& fs , sinhvien arr[] , int n){
+    //mo file de ghi
+    fs.open("D:\\inoutc++.cpp\\input.txt",ios::out); 
+    if(!fs.is_open()){
+        cout<<"tep mo that bai"<<endl;
+    }
+    for(int i = 0 ; i < n ; i++){
+        fs<<arr[i].hoten<<endl;
+        fs<<arr[i].gioitinh<<endl;
+        fs<<arr[i].age<<endl;
+    }
+    fs.close();
+}
+void docfile(fstream& fs , sinhvien arr[] , int n){
+    //mo file de doc
+    fs.open("D:\\inoutc++.cpp\\input.txt",ios::in);
+    if(!fs){
+        cout<<"mo file that bai"<<endl;
+    }
+    for(int i = 0 ; i < n ; i++){
+        getline(fs , arr[i].hoten);
+        getline(fs , arr[i].gioitinh);
+        fs>>arr[i].age;
+        fs.ignore();
+    }
+    fs.close();
+}
+void nhap(sinhvien arr[] , int n){
+    for(int i = 0 ; i < n ; i++){
+        cout<<"nhap ds sinh vien thu "<< i+1 <<endl;
+        cin.ignore();
+        getline(cin , arr[i].hoten);
+        getline(cin , arr[i].gioitinh);
+        cin>>arr[i].age;
+    }
+}
+void xuatcasal(sinhvien arr[], int n){
+    for(int i = 0 ; i < n ; i++){
+        cout<<"sinh vien thu "<<i+1<<endl;
+        cout<<"ho ten sinh vien "<<arr[i].hoten<<endl;
+        cout<<"gioi tinh sv la: "<<arr[i].gioitinh<<endl;
+        cout<<"tuoi sv la: "<<arr[i].age<<endl;
+}
+}
+int main(){
+    int n ; cin>>n;
+    cin.ignore();
+    sinhvien arr[n];
+    nhap(arr , n);
+    fstream fs;
+    ghifile(fs , arr , n);
+    docfile(fs , arr , n);
+    xuatcasal(arr , n);
+}
