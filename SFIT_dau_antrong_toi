@@ -14,8 +14,6 @@ public class SFITEffect extends JPanel implements ActionListener {
         timer = new Timer(10, this);
         timer.start();
     }
-
-    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -26,8 +24,6 @@ public class SFITEffect extends JPanel implements ActionListener {
         g2d.drawString("SFIT", x, 100); 
     }
 
-    
-    @Override
     public void actionPerformed(ActionEvent e) {
         
         x += direction * 2;
